@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+        <div>
+            <span>
+                <label>Input 1</label>
+                <input type="text" class="input1" id="input1" data-bind="value:Input1">
+            </span>
+            <span>
+                <label>Input 2</label>
+                <input type="text" class="input2" id="input2" data-bind="value:Input2">
+            </span>
+            <span>
+                <button data-bind="click:CalculateSum" id="btn" >ADD</button>
+            </span><br><br>
+            <span>
+                <label>Output</label>
+                <input type="number" class="output" id="output" value="value:Output">
+            </span>
+        </div>
+	</body>
+	<script type="text/javascript">
+		jQuery(function(){
+		var viewModelConstructor = function()
+		{
+		this.Input1 = ko.observable();
+		this.Input2 = ko.observable();
+		this.Output = ko.observable();
+		this.CalculateSum=function(){
+					this.Output(Number(this.Input1()) + Number(this.Input2()));
+                    console.log(Number(this.Input1())+Number(this.Input2()));
+				}
+		}
+		var viewModel = new viewModelConstructor;
+			ko.applyBindings(viewModel);
+		});
+	</script>
+</html>
